@@ -1,4 +1,4 @@
-const names = [
+const users = [
   'Aaran',
   'Aaren',
   'Aarez',
@@ -74,7 +74,7 @@ const names = [
   'Parker',
 ];
 
-const appDescriptions = [
+const thoughts = [
   'Decision Tracker',
   'Find My Phone',
   'Learn Piano',
@@ -95,24 +95,45 @@ const appDescriptions = [
   'Deliveries',
 ];
 
-// Get a random item given an array
-const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const reactions = [
+  'like',
+  'love',
+  'wow',
+  'haha',
+  'sad',
+  'angry',
+  'thumbs-up',
+  'thumbs-down',
+];
 
-// Gets a random full name
-const getRandomName = () =>
-  `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
 
-// Function to generate random assignments that we can add to student object.
-const getRandomAssignments = (int) => {
-  const results = [];
+const getRandomArrayItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+const getRandomName = () => getRandomArrayItem(users);
+
+const getRandomThoughts = (int) => {
+  let results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      assignmentName: getRandomArrItem(appDescriptions),
-      score: Math.floor(Math.random() * (99 - 70 + 1) + 70),
+      published: Math.random() < 0.5,
+      description: getRandomArrayItem(thoughts),
+      buildSuccess: Math.random() < 0.5,
+      reactions: getThoughtReactions(3),
     });
   }
   return results;
 };
 
-// Export the functions for use in seed.js
-module.exports = { getRandomName, getRandomAssignments };
+const getThoughtReactions = (int) => {
+  const results = [];
+  for (let i = 0; i < int; i++) {
+    results.push({
+      reaction: getRandomArrayItem(reactions),
+      username: getRandomName(),
+    });
+  }
+  return results;
+};
+
+
+module.exports = { getRandomName, getRandomThoughts };
