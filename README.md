@@ -16,7 +16,7 @@ This project is a database for a Social Media application
 Install Mongoose and Express and test the routes with Insomnia
 
 ## Usage
-For updating team profiles for businesses/companies.
+Database for a Social Media Company
 
 ## Contributing
 Contributions are accepted! Please reach out to me directly.
